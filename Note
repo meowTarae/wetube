@@ -1,0 +1,1 @@
+터미널에 npm i 만 입력해도 package.json - dependencies 에 있는 항목이 자동으로 설치된다.

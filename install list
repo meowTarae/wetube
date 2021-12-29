@@ -1,2 +1,5 @@
 1. npm i express
+2. npm install --save-dev @babel/core
+   npm install @babel/preset-env --save-dev
 
+3.

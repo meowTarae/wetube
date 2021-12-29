@@ -8,7 +8,7 @@
     "url": "git+https://github.com/meowTarae/wetube.git"
   },
   "scripts": {
-    "start": "node index.js"
+    "dev": "nodemon --exec babel-node index.js"
   },
   "author": "Tarae",
   "license": "MIT",
@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
-    "@babel/preset-env": "^7.16.5"
+    "@babel/node": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "nodemon": "^2.0.15"
   }
 }

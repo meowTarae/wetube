@@ -3,3 +3,13 @@
 그래서 용량 큰 node_modules 없어도 됨.
 
 
+#3.0
+express.listen(port값)으로 서버를 열 수 있다.
+
+#3.1
+브라우저는 나 대신 웹사이트를 요청해준다
+
+#3.2
+express().get("/") 로 request를 할 수 있다
+
+#

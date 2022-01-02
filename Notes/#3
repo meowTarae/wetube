@@ -12,6 +12,19 @@ express.listen(port값)으로 서버를 열 수 있다.
 #3.2
 express().get("/") 로 request를 할 수 있다
 
+#3.3
+const app = express();
+app.get("/login", handleLogin);
+
+function handleLogin (req, res) {
+    return res.~~~;
+}
+
+get 함수로 받은 handleLogin 함수는
+request와 response를 포함해야한다.
+
+또한 response를 return해줘야 한다.
+
 #3.4
 get으로 route해준 함수에서는 request, response를 해줘야 한다.
 내가 server이고, brwoser가 중간역할, 스크린에서의 유저가 있다.

@@ -5,29 +5,23 @@ const app = express();
 const Port = 4000;
 
 const logger = morgan("dev");
-
-const privateMiddleware = (req, res, next) => {
-  const url = req.url;
-  if (url === "/protected") {
-    return res.send("<h1>Not Allowed !</h1>");
-  }
-  console.log("Allowed url");
-  next();
-};
-
-const handleHome = (req, res) => {
-  return res.send("Hi");
-};
-
-const handleProtected = (req, res) => {
-  return res.send("Protected lounge.");
-};
-
 app.use(logger);
-app.use(privateMiddleware);
 
-app.get("/", handleHome);
-app.get("/protected", handleProtected);
+const globalRouter = express.Router();
+const handleHome = (req, res) => res.send("Home");
+globalRouter.get("/", handleHome);
+
+const userRouter = express.Router();
+const handleEditUser = (req, res) => res.send("Edit User");
+userRouter.get("/users", handleEditUser);
+
+const videoRouter = express.Router();
+const handleWatchVideo = (req, res) => res.send("Watch Video");
+videoRouter.get("/videos", handleWatchVideo);
+
+app.use("/", globalRouter);
+app.use("/users", userRouter);
+app.use("/videos", videoRouter);
 
 const handleListening = () =>
   console.log(`Sever listening on port http://localhost:${Port}`);

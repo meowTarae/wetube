@@ -1,0 +1,51 @@
+import express from "express";
+
+const app = express();
+const PORT = 4000;
+
+const urlLoger = (req, res, next) => {
+  console.log("URL : ", req.path);
+  next();
+};
+
+const timeLoger = (req, res, next) => {
+  const date = new Date();
+  const hour = date.getHours();
+  const min = date.getMinutes();
+  const sec = date.getSeconds();
+  console.log(`Now time is.. ${hour} : ${min} : ${sec}`);
+  next();
+};
+
+const securityLogger = (req, res, next) => {
+  if (req.protocol === `http`) {
+    console.log("Protocol : Insecure");
+  } else {
+    console.log("Protocol : Secure");
+  }
+  next();
+};
+
+const protectorMiddleware = (req, res, next) => {
+  const url = req.url;
+  if (url === "/protected") {
+    return res.send("<h1>Warning!</h1>");
+  }
+  next();
+};
+
+const handleHome = (req, res) => {
+  return res.send("<h3>Here is home !</h3>");
+};
+
+app.use(urlLoger);
+app.use(timeLoger);
+app.use(securityLogger);
+app.use(protectorMiddleware);
+
+app.get("/", handleHome);
+
+const handleListening = () => {
+  console.log(`Go To http://localhost:${PORT}`);
+};
+app.listen(PORT, handleListening);

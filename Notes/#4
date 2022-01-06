@@ -1,9 +1,14 @@
 #4.0
 라우터란?
 
-url관리를 쉽게 해주는 미니 어플리케이션을 만들게 해줌.
+예전처럼 모든 url을 app.get()으로 하려니 너무 힘드렁
+
+라우터는 url관리를 쉽게 해주는 
+미니 어플리케이션을 만들게 해줌.
 도메인별로 나누는게 좋다.
+
 ex) /user/login/edit/~~/~~ 처럼 /으로 구분하는 것 
+
 
 #4.1
 Router 사용법
@@ -18,6 +23,7 @@ app.use("/tarae", taraeRouter);
 
 라우터는 전처럼 app(= express()).get("/", handle~~)이 아닌, 'Router get'을 사용함.
 또한 /gansik이 아닌, /tarae/gansik으로 검색해야 함.
+
 
 #4.2
 clean code
@@ -42,3 +48,9 @@ export const ~~2
 
 import { ~~1, ~~2 } from "./~~/~~"; 
 ; 위 처럼 수입 해오면 됨
+
+참고로 const 변수에서 new나 delete같은건 못씀
+이미 js에 있는거라
+
+
+#4.4

@@ -1,11 +1,9 @@
 import express from "express";
+import { edit, remove } from "../controllers/userController";
 
 const userRouter = express.Router();
 
-const handleEdit = (req, res) => res.send("유수정");
-const handledelete = (req, res) => res.send("삭제");
-
-userRouter.get("/edit", handleEdit);
-userRouter.get("/delete", handledelete);
+userRouter.get("/edit", edit);
+userRouter.get("/remove", remove);
 
 export default userRouter;

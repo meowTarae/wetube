@@ -15,7 +15,7 @@ Router 사용법
 
 const taraeRouter = express.Router(); 
 const handleGansik = (req, res) => {
-    res.send("챠오츄르~");
+    res.send("츄르~");
 }
 taraeRouter.get("/gansik", handleGansik);
 

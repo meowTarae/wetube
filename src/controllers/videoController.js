@@ -1,3 +1,3 @@
-export const recomends = (req, res) => res.send("recomends Videos");
-export const watch = (req, res) => res.send("Watch");
+export const recomends = (req, res) => res.render("home");
+export const watch = (req, res) => res.render("watch");
 export const edit = (req, res) => res.send("Edit Videos");

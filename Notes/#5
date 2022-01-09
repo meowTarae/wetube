@@ -96,3 +96,65 @@ res.render("home", {pageTitle: "Home"});
 
 그럼 extends 한 base.pug에 변수값이 들어가면서 작동 되는거지
 
+
+#5.6
+MVP.css
+html태그에 여러 스타일을 입혀 줌.
+사실 임시방편 용.
+뭔가를 만들면 css를 맨 마지막에 입히는데
+그 전까지만 사용하려고 쓰는거 ㅇㅇ
+
+
+head에 아래 라인을 추가.
+link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+
+( <link rel="stylesheet" href="주소"> 
+  원래 이거인데 pug는 <> 없이 저렇게 간편하게 작성한다)
+
+
+#5.7
+conditional
+(if, if else 같은거)
+
+const tarae = "hi"
+h1=tarae  => hi
+h1 #{tarae}  => hi
+
+근데 #을 쓰는 이유는, text와 혼합해서 사용하기 위함.
+
+
+#5.8
+iteration
+
+controller에서 배열 myVideos를 받아왔다고 했을 때,
+pug에서 나열하려면
+
+ul
+    each myVideo in myVideos
+        li=myVideo
+
+myVideo는 배열 loop상의 값으로, array의 item을 가리킴.
+item 이름은 통상적으로 배열에 s 뺀 이름을 사용.
+
+
+#5.9
+mixin
+footer를 수입해오는 include같은 partials인데
+데이터를 받을 수 있는걸 뜻함.
+
+사용법
+1. mixin으로 쓸 pug파일을 만들어 준다
+
+2. 
+맨 위에
+mixin video(info)
+(= mixin 파일이름(받을 데이터))
+
+3. 
+사용할 page의 
+맨위에 include 주소/mixin파일이름
+block ~~~ 
+    +video(info)
+    (= +mixin파일이름(가져갈 데이터))
+
+

@@ -1,0 +1,12 @@
+#6.0
+드디어 백엔드에 대하여 배워보자!
+백엔드엔 데이터들이 있겠지.
+
+이제 app.get, get만 하는게 아니라
+Post를 해야되.
+
+일단 백엔드에 data를 post하는 방법부터 배우자 !
+
+ES6
+const { id } = req.params;
+= const id = req.params.id;

@@ -2,7 +2,7 @@ extends layout.pug
 include mixins/video.pug
 
 block content
-  each info in videos
-    +video(info)
+  each video in videos
+    +video(video)
   else
     li No Data.

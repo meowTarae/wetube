@@ -20,7 +20,7 @@ let videos = [
     rating: 4.5,
     comments: 3,
     createdAt: "3 minutes ago",
-    views: 300,
+    views: 1,
     id: 3,
   },
 ];
@@ -32,10 +32,10 @@ export const search = (req, res) =>
   res.render("search", { pageTitle: "Search" });
 export const upload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
-export const see = (req, res) => {
+export const Watch = (req, res) => {
   const { id } = req.params;
   const video = videos[id - 1];
-  return res.render("watch", { pageTitle: `Watching ${video.title}` });
+  return res.render("watch", { pageTitle: `Watching ${video.title}`, video });
 };
 export const editVideo = (req, res) =>
   res.render("editvideo", { pageTitle: "Edit" });

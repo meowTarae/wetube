@@ -10,3 +10,39 @@ Post를 해야되.
 ES6
 const { id } = req.params;
 = const id = req.params.id;
+
+
+
+#6.1
+pug에서는 #{~ ? ~ : ~}
+앞에 #붙여서 쓰자
+
+
+absolute url 과 relative url
+
+현 위치
+localhost:4000/users/edit-profile/password
+
+a(href="/login") 
+=> localhost:4000/login
+
+a(href="login") 
+=> localhost:4000/users/edit-profile/login 
+현 위치에 login이 붙음 
+
+그럼 ~~password/login으로 가고싶다?
+a(href="password/login") 혹은
+a(href=`${video.id}/login`) 라고 적으면 되겠지 ㅇㅇ
+
+걍 relative url은 맨앞에 / 없는거라고 생각하자.
+
+
+
+
+
+
+
+
+
+
+

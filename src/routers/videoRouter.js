@@ -1,7 +1,7 @@
 import express from "express";
 import {
   upload,
-  see,
+  Watch,
   editVideo,
   deleteVideo,
 } from "../controllers/videoController";
@@ -9,7 +9,7 @@ import {
 const videoRouter = express.Router();
 
 videoRouter.get("/upload", upload);
-videoRouter.get("/:id(\\d+)", see);
+videoRouter.get("/:id(\\d+)", Watch);
 videoRouter.get("/:id(\\d+)/edit", editVideo);
 videoRouter.get("/:id(\\d+)/delete", deleteVideo);
 

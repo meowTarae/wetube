@@ -1,11 +1,8 @@
-extends base.pug
-include mixins/video
-//- pug는 똑똑해서 파일 뒤에 .pug 붙여도 되고 안붙여도 됨~~
-
+extends layout.pug
+include mixins/video.pug
 
 block content
-    h3 Here is home!
-    each info in videos
-        +video(info)
-    else 
-        li No Data. 
+  each info in videos
+    +video(info)
+  else
+    li No Data.

@@ -119,6 +119,7 @@ if tarae === true
 else
     li=user.name
 
+
 text와 혼합해서 사용하기 위해 #{} 사용.
 
 
@@ -127,7 +128,7 @@ text와 혼합해서 사용하기 위해 #{} 사용.
 iteration
 
 controller에서 배열 myVideos를 받아왔다고 했을 때,
-pug에서 나열하려면
+pug에서 나열하려면 each ~ in ~
 
 ul
     each myVideo in myVideos

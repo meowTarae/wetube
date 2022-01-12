@@ -17,7 +17,6 @@ const { id } = req.params;
 pug에서는 #{~ ? ~ : ~}
 앞에 #붙여서 쓰자
 
-
 absolute url 과 relative url
 
 현 위치
@@ -34,7 +33,15 @@ a(href="login")
 a(href="password/login") 혹은
 a(href=`${video.id}/login`) 라고 적으면 되겠지 ㅇㅇ
 
-걍 relative url은 맨앞에 / 없는거라고 생각하자.
+relative url은 맨앞에 / 없는거라고 생각하자.
+
+
+
+#6.2
+
+
+
+
 
 
 

@@ -38,10 +38,13 @@ export const watch = (req, res) => {
 export const getEdit = (req, res) => {
   const { id } = req.params;
   const video = videos[id - 1];
-  return res.render("editvideo", {
+  return res.render("edit", {
     pageTitle: `Editing: ${video.title}`,
     video,
   });
 };
 
-export const postEdit = (req, res) => {};
+export const postEdit = (req, res) => {
+  const { id } = req.params;
+  res.redirect(`/videos/${id}`);
+};

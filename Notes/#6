@@ -45,16 +45,18 @@ post -> 파일을 보내거나, DB에 있는 값을 바꾸는 등에 사용
 
 
 
+#6.3
+get, post를 한줄로 줄이면
+videoRouter.route("경로").get(함수).post(함수);
+
+redirect
+브라우저가 자동으로 이동하도록 해줌
 
 
+express app에서 form(html)을 처리하는 방법
+=> `urlencoded`
+app.use(express.urlencoded({ extended: true }));
 
 
-
-
-
-
-
-
-
-
-
+req.body로 user가 form에 입력한 값을 얻을 수 있음
+(input에 name을 줘야만 값을 얻을 수 있음!)    

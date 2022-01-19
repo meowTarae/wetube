@@ -60,3 +60,39 @@ app.use(express.urlencoded({ extended: true }));
 
 req.body로 user가 form에 입력한 값을 얻을 수 있음
 (input에 name을 줘야만 값을 얻을 수 있음!)    
+
+
+
+#6.8
+MongoDB
+
+설치
+mongo 홈페이지에서 다운 후 
+cmd에서 ' cd MongoDB의 bin 설치 파일 경로 ' 입력 후 
+mongod, mongo를 입력함
+view dbs를 입력했을 때 값이 나오면 정상.
+
+
+사용법
+db로 쓸 js파일 생성
+
+import mongoose from "mongoose";
+
+mongoose.connect("mongodb://127.0.0.1:27017/wetube"); 를 입력
+(wetube는 서버명임)
+
+메인 서버 js파일에서는
+import "./db" 로, import값만 입력하면 된다.
+
+db.on -> 여러번 발생 가능
+db.once -> 한번만 ``
+
+
+
+#6.9
+mongoose는 우리가 mongoDB와 대화할 수 있게 해줌
+그렇기에 mongoose를 도와줘야 함 => 데이터들이 어떻게 생겼는지 알려주자.
+
+db는 데이터가 어떻게 생겼는지 알아야 함
+어떤 item이 있는지, 속성은 어떤지(= string인지 num인지)를 말이다.
+

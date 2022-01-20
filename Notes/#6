@@ -142,7 +142,21 @@ promise ->
 
 
 #6.12
+<callback explanation>
+
 video.find({}, (err, videos)=>{})
 // {} => search terms, null == all schemas.
 // , () => err와 docs(= documents)를 수신
-// <callback explanation>
+
+작동 순서로,
+page를 먼저 req하고
+render과정을 거쳐야 logger를 얻게 됨
+-> db 검색이 안 끝났을 때 render 되는 것을 방지해줌.
+
+err 발생 시, find() 에서 바로 err를 활용할 수 있음.
+
+
+
+#6.13
+
+

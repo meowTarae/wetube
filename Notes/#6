@@ -134,17 +134,23 @@ init.js는 model, db 관련된 것만.
 controller 파일에서 model 파일을 사용하려면,
 먼저 import를 하자.
 
-video.find()
-두가지 작동 방식
-callback -> Calling func that after something happens 
-promise -> 
+video.find() 
+find func에는 2가지 작동 방식이 있음.
+1. callback
+   -> Calling func that after something happens 
+2. promise
+   -> callback의 최신 버전
+      
 
 
 
 #6.12
 <callback explanation>
 
-video.find({}, (err, videos)=>{})
+video.find({}, (err, videos)=>{
+    ~~
+});
+
 // {} => search terms, null == all schemas.
 // , () => err와 docs(= documents)를 수신
 
@@ -152,11 +158,36 @@ video.find({}, (err, videos)=>{})
 page를 먼저 req하고
 render과정을 거쳐야 logger를 얻게 됨
 -> db 검색이 안 끝났을 때 render 되는 것을 방지해줌.
+   하지만 순서가 꼬임
 
-err 발생 시, find() 에서 바로 err를 활용할 수 있음.
+err 발생 시, find() 내부 func의 err argu를 
+바로 활용할 수 있는 장점이 있음.
 
 
 
 #6.13
+<promise explanation>
+== Async await
 
+export const home = (req, res) => {} 를
+export const home = async(req, res) => {
+    const videos = await Video.find({});
+} 로 나타내주면 됨
+
+
+작업별로 시간이 달라 꼬이는 js때문에
+callback 이 만들어졌고,
+await는 db로 부터 값을 받기까지 계속 기다려주기에
+순서가 꼬일 일은 없음.
+
+대신 err를 잡아내려면
+1. try / catch
+try{
+    const videos = await Video.find({});
+    ~~
+} catch(error) {
+    return res.req("error");
+}
+try로 돌리다가 await에 err가 발생하면
+catch 함수로 점프해줌. 
 

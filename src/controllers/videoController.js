@@ -25,7 +25,7 @@ let videos = [
     id: 3,
   },
 ];
-export const home = async (req, res) => {
+export const home = (req, res) => {
   // const videos = await Video.find({});
 
   return res.render("home", { pageTitle: "Home", videos });

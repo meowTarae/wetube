@@ -91,8 +91,37 @@ db.once -> 한번만 ``
 
 #6.9
 mongoose는 우리가 mongoDB와 대화할 수 있게 해줌
-그렇기에 mongoose를 도와줘야 함 => 데이터들이 어떻게 생겼는지 알려주자.
+그렇기에 mongoose를 도와줘야 함
+ => 데이터들이 어떻게 생겼는지 모델을 만들어서 알려주자.
 
-db는 데이터가 어떻게 생겼는지 알아야 함
+db는 모델의 데이터가 어떻게 생겼는지 알아야 함
 어떤 item이 있는지, 속성은 어떤지(= string인지 num인지)를 말이다.
 
+
+
+#6.10
+schema
+db에서 형식을 지정할때 사용됨
+
+const videoSchema = new mongoose.Schema({
+    title: { type: String },
+        or
+    title: String,
+    // 두 방식 모두 사용 가능.
+    createdAt: Date,
+    hashtags: [{ type: String }],
+    // 배열로 사용하려면 위 방식으로.
+});
+
+schema를 만들어줬다면,
+const Video = mongoose.model("Video", videoSchema);
+                        // 아무 이름, 함수명
+
+model 파일에는 import mongoose를 해줌으로써
+db파일과 연동해준다.
+그리고 server.js에도 video를 사용한다고 import 해줘야함.
+그래서 마지막에 export까지 해주면 됨.
+
+
+
+#6.11

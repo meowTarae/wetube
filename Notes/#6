@@ -91,8 +91,8 @@ db.once -> 한번만 ``
 
 #6.9
 mongoose는 우리가 mongoDB와 대화할 수 있게 해줌
-그렇기에 mongoose를 도와줘야 함
- => 데이터들이 어떻게 생겼는지 모델을 만들어서 알려주자.
+mongoose를 사용하려면 도움을 줘야 함.
+ => 데이터들이 어떻게 생겼는지, `모델`을 만들어서 알려주자.
 
 db는 모델의 데이터가 어떻게 생겼는지 알아야 함
 어떤 item이 있는지, 속성은 어떤지(= string인지 num인지)를 말이다.
@@ -131,17 +131,16 @@ server.js는 express 관련된 것만,
 init.js는 model, db 관련된 것만.
 
 
-controller 파일에서 model 파일을 사용하려면,
-먼저 import를 하자.
+controller 파일에서 model 파일을 활용하려면 먼저 import를 하자.
 
-video.find() 
-find func에는 2가지 작동 방식이 있음.
+find() func로 db에 접근 가능해.
+
+find func에는 2가지 작동 방식이 있어.
 1. callback
-   -> Calling func that after something happens 
+   -> Call func when after something happens 
 2. promise
    -> callback의 최신 버전
       
-
 
 
 #6.12
@@ -152,9 +151,10 @@ video.find({}, (err, videos)=>{
 });
 
 // {} => search terms, null == all schemas.
+// (terms는 schema에서 title이라던가 hashtags같은 것)
 // , () => err와 docs(= documents)를 수신
 
-작동 순서로,
+callback의 작동 순서로는
 page를 먼저 req하고
 render과정을 거쳐야 logger를 얻게 됨
 -> db 검색이 안 끝났을 때 render 되는 것을 방지해줌.
@@ -178,16 +178,25 @@ export const home = async(req, res) => {
 작업별로 시간이 달라 꼬이는 js때문에
 callback 이 만들어졌고,
 await는 db로 부터 값을 받기까지 계속 기다려주기에
-순서가 꼬일 일은 없음.
+순서가 꼬일 일이 없음.
 
-대신 err를 잡아내려면
-1. try / catch
+
+대신 err를 잡아내려면 try / catch를 사용함.
 try{
     const videos = await Video.find({});
     ~~
 } catch(error) {
     return res.req("error");
 }
+
 try로 돌리다가 await에 err가 발생하면
 catch 함수로 점프해줌. 
 
+
+
+#6.14
+return을 사용하는 이유
+
+ex) return res.render(~~)
+-> func이 render 작업 후 종료되기 위함
+-> return은 적어줌으로써 뒤에 뭔가 더 적는 실수를 줄여주는 역활.

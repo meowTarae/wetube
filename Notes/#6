@@ -133,9 +133,9 @@ init.js는 model, db 관련된 것만.
 
 controller 파일에서 model 파일을 활용하려면 먼저 import를 하자.
 
-find() func로 db에 접근 가능해.
+find() 로 db에 접근 가능해.
 
-find func에는 2가지 작동 방식이 있어.
+find() 에는 2가지 작동 방식이 있어.
 1. callback
    -> Call func when after something happens 
 2. promise
@@ -201,15 +201,16 @@ ex) return res.render(~~)
 -> func이 render 작업 후 종료되기 위함
 -> return은 적어줌으로써 뒤에 뭔가 더 적는 실수를 줄여주는 역활.
 
+== 없어도 되긴 함
 
 
 #6.15
 split
 string들을 분리하는 역활
 
-ex) "hi,food,tarae".split(",")
- => , 기준으로 분리되어 ["hi", "food", "tarae"] 로 변경됨.
-
+ex) ["hi,food,tarae"].split(",") 
+ => ["hi", "food", "tarae"] 로 변경됨.
+    
 +) map 활용
     tags.split(",").map((word) => `@{word}`)
     => ["@hi", "@food", "@tarae"]

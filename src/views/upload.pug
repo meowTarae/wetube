@@ -1,4 +1,13 @@
 extends layout
 
 block content
-  h1 Upload your videos!
+  form(method="POST")
+    input(placeholder="Title", required, type="text", name="title")
+    input(placeholder="Description", required, type="text", name="description")
+    input(
+      placeholder="Hashtags, separated by comma.",
+      required,
+      type="text",
+      name="hashtags"
+    )
+    input(type="submit", value="Upload Video")

@@ -29,6 +29,17 @@ export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: `Uploading` });
 };
 export const postUpload = (req, res) => {
-  const { id } = req.params;
+  const { title, description, hashtags } = req.body;
+  const video = new Video({
+    title: title,
+    description: description,
+    createdAt: Date.now(),
+    hashtags: hashtags.split(",").map((word) => `#${word}`),
+    meta: {
+      views: 0,
+      rating: 0,
+    },
+  });
+  console.log(video);
   return res.redirect("/");
 };

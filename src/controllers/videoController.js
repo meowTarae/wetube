@@ -25,21 +25,22 @@ export const postEdit = (req, res) => {
 };
 
 export const getUpload = (req, res) => {
-  const { id } = req.params;
   return res.render("upload", { pageTitle: `Uploading` });
 };
-export const postUpload = (req, res) => {
+
+export const postUpload = async (req, res) => {
   const { title, description, hashtags } = req.body;
-  const video = new Video({
-    title: title,
-    description: description,
-    createdAt: Date.now(),
-    hashtags: hashtags.split(",").map((word) => `#${word}`),
-    meta: {
-      views: 0,
-      rating: 0,
-    },
-  });
-  console.log(video);
-  return res.redirect("/");
+  try {
+    await Video.create({
+      title,
+      description,
+      hashtags: hashtags.split(",").map((word) => `#${word}`),
+    });
+    return res.redirect("/");
+  } catch (e) {
+    return res.render("upload", {
+      pageTitle: `Uploading`,
+      errorMessage: e._message,
+    });
+  }
 };

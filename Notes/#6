@@ -46,11 +46,19 @@ post -> 파일을 보내거나, DB에 있는 값을 바꾸는 등에 사용
 
 
 #6.3
+form(method="GET or POST", action="/videos")
+get -> 데이터를 받기만 하면 됨.
+        주소창에 값을 넣는다거나~
+post -> 데이터가 db에 들어가서
+        값을 수정 등에 사용.
+action -> 특정 주소로 이동하게 해줌.
+
+
 get, post를 한줄로 줄이면
 videoRouter.route("경로").get(함수).post(함수);
 
 redirect
-브라우저가 자동으로 이동하도록 해줌
+브라우저가 자동으로 이동(= redirect)하도록 해줌
 
 
 express app에서 form(html)을 처리하는 방법
@@ -217,3 +225,45 @@ ex) ["hi,food,tarae"].split(",")
 
 
 
+#6.16
+mongoose에 schema를 설정했기에
+string값에 숫자같은
+유효하지 않는 값을 넣으면
+출력을 하지 않게 해줌.
+
+
+데이터를 db에 전송하는데는 시간이 걸림.
+그래서 schmea값을 저장하려면 
+(= 
+    cosnt video = new Video({
+        ~~~,
+    })
+    video.save() 
+)
+async await를 붙여서 기다려 줘야 해.
+
+그리고 save말고 create로 식을 만들 수 있다
+(=
+    await Video.create({
+        ~~~,
+    })
+)
+
+
+
+#6.18
+schema에 여러 옵션을 추가해줄 수 있음
+required, uppercase, trim..
+trim은 여백을 없애줌
+
+
+
+#6.19
+schema에서 설정한 옵션들은 pug html에서도
+설정을 해 줘야함.
+해커들이 html값을 변경해도 db에서 한번 더 확인이 가능하기 때문.
+크로스체크 같은 느낌이다.
+
+
+
+#6.20

@@ -301,6 +301,40 @@ mongoose에서의 middleware
 model 파일에서 코딩되며
 model이 생성되기 전에 작성되어야 함.
 
+Model.pre("save", async function () {
+; 모델 명, middleware기에 pre붙고
+; 우린 새로운 데이터를 저장 할거라 save라는 middleware를 넣는다.
+    ~~
+})
+
+ex)
+videoSchema.pre("save", async function () {
+  this.hashtags = this.hashtags[0]
+    .split(",")
+    .map((word) => (word.startsWith("#") ? word : `#${word}`));
+});
+; 여기서 this는 우리가 저장하고자 하는 문서를 가르킴.
+; this는 hashtags들을 ['hello', 'words'] 가 아닌
+; ['hello,words'] 처럼 한 단어로 인식해버림
+; 해서 this.hashtags[0] 로 값을 가져온 후
+; split(',')으로 나누고, map으로 # 첨가 해주는 거 ㅇㅇ  
+
+
+#6.24
+Statics
+여러 Model func들, exists, findById.. 등을 만들 수 있다.
+
+Schema.static, func, static 이름이 필요.
+
+ex)
+videoSchema.static("formatHashtags", function (hashtags) {
+;  Schema.static      func name,        가져올 데이터
+  return hashtags
+    .split(",")
+    .map((word) => (word.startsWith("#") ? word : `#${word}`));
+});
+
+
 
 
 

@@ -1,4 +1,18 @@
 extends layout
+include mixins/video.pug
 
 block content
-  h1 Search videos what you want
+  form(method="get") 
+    input(type="text", required, name="keyword", placeholder="Search by title")
+    input(type="submit", value="Enter")
+
+  hr
+  div
+    if keyword && video.length === 0
+      small Sorry, No data.
+    else if keyword
+      each v in video
+        +video(v)
+    else
+      small Serach video's you want!
+  br

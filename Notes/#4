@@ -49,7 +49,7 @@ export const ~~2
 import { ~~1, ~~2 } from "./~~/~~"; 
 ; 위 처럼 수입 해오면 됨
 
-참고로 const 변수에서 new나 delete같은건 못씀
+참고로 const 변수명을 new나 delete 같은건 못씀
 이미 js에 있는거라
 
 

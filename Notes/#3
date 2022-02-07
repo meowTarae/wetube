@@ -33,7 +33,7 @@ get으로 route해준 함수에서는 request, response를 해줘야 한다.
 우리는(서버) 반드시 response를해줘야 한다.
 
 #3.5
-middleware 중간에있는 소프트웨어
+middleware = 중간에있는 소프트웨어
 `=. controller (= handlehome 같은 함수를 일컫음)
 req와 res의 사이에 있다
 

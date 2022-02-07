@@ -26,6 +26,7 @@ app.set("view engine", "pug");
 controller 폴더에 가서
 return res.render("pug파일명");
 
+
 ! 처음 pug 사용 시 경로 에러가 난다
 
 js server에서 console.log(process.cwd())를 때려보면
@@ -45,11 +46,12 @@ cwd 변경은 디폴트 값을 바꾸면 됨
 
 view engine을 set 하고
 app.set("views", process.cwd() + "/src/views");
+; views는 파일명
 라고 경로를 설정해주면 됨
 
 
 js에서 import 같은거
-pug에서 `includes`가 있음
+pug에서 `include`가 있음
 
 include /경로/~~.pug 를 적어주자!
 
@@ -102,7 +104,7 @@ html태그에 여러 스타일을 입혀 줌.
 뭔가를 만들면 css를 맨 마지막에 입히는데
 그 전까지만 사용하려고 쓰는거 ㅇㅇ
 
-pug 파일 head 부분에 아래 라인을 추가.
+pug 파일(= html) head 부분에 아래 라인을 추가.
 link(rel="stylesheet" href="https://unpkg.com/mvp.css")
 
 (= <link rel="stylesheet" href="주소">;
@@ -151,6 +153,7 @@ footer를 수입해오는 include같은 partials인데
 mixin 파일 맨 위에
 mixin video(info)
 (= mixin 파일이름(받을 데이터))
+라고 이 파일은 mixin 파일로 쓸거라고 선언.
 
 3. 
 사용할 page의 

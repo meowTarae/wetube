@@ -1,0 +1,5 @@
+#7.0
+user authentication을 crud모델에 맞게 만들어보자.
+
+schema에서 unique: true를 추가해 줌으로써 중복을 방지해줌.
+

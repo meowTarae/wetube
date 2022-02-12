@@ -1,4 +1,9 @@
 extends layout
 
 block content
-  h1 Login page
+  if errorMessage
+    span= errorMessage
+  form(method="post")
+    input(type="text", placeholder="Username", required, name="username") 
+    input(type="password", placeholder="Password", required, name="password") 
+    input(type="submit", value="Login")

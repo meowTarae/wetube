@@ -20,7 +20,7 @@ hash는 일방향 함수이다.
 (항상 똑같이 나오는 값을 deterministic f(= 결정적 함수) 라 함)
 
 해싱을 위해 bcrypt를 사용해보자.
-(참고 - 해싱된 ps로 공격할 수 있음, rainbow table로.)
+(참고 - ps를 해킹할 수 있는 rainbow table를 bcrypt로 막을 수 있음)
 
 userSchema.pre("save", async function () {
 ; Schema파일에서 promise를 사용.
@@ -32,3 +32,50 @@ userSchema.pre("save", async function () {
 
 
 #7.3
+join시 항목 중복 체크.
+
+db에 해당 item이 중복되는지 확인 할 때,
+
+const a = User.exists({ username });
+const b = User.exists({ email });
+.. 처럼 중복되는 문장들은
+
+const c = User.exists({ $or: [{ username }, { email }] });
+$or를 활용해주면 좋다. 
+
+
+
+#7.4
+status code(= 상태코드)
+
+npm 실행 시
+GET / 200 360.148 ms - - 에서 숫자 200이 status code임.
+200은 Ok 판정이라서, 브라우저가 id,ps를 자동 저장 할까요? 같은 문구가 나오게도 해줌
+
+7.3에서 중복 에러 발생에도, 상태 코드를 관리하지 않으면
+계정 자동 저장 문구가 나타나겠지?
+
+2xx - success line
+3xx - rediretion line
+4xx - error line
+
+우리 상황엔 400(= Bad request)를 보내주면 좋을 것 같아.
+404는 Not found
+
+보내는 방법 
+=> res.status(400).render("~~")
+
+
+
+#7.5
+user가 로그인 할 때, 비번이 맞는지 확인하려면~
+입력 ps를 우리가 해싱해서, db에 해싱되어있는 ps 값과 같은지 확인하면 끝. 
+
+
+비교를 위해 bcrypt의 compare()를 사용하자.
+const match = await bcrypt.compare(user입력 값, hash된 값)
+
+match는 T/F 값을 받음
+
+
+

@@ -3,3 +3,32 @@ user authentication을 crud모델에 맞게 만들어보자.
 
 schema에서 unique: true를 추가해 줌으로써 중복을 방지해줌.
 
+
+
+#7.1
+user가 회원가입을 해서 id와 pw를 db에 받아들일 때,
+비번이 그대로 보인다면 해커에게 쉽게 털리겠지.
+
+db에 password를 저장하면 안됨.
+비번을 hashing(= 해시화)을 통해 봐도 알 수 없게끔 보안을 걸어주자.
+
+
+
+#7.2
+hash는 일방향 함수이다.
+입력값 -> 출력값이 되지만, 출력값으론 입력값을 알 수 없다.
+(항상 똑같이 나오는 값을 deterministic f(= 결정적 함수) 라 함)
+
+해싱을 위해 bcrypt를 사용해보자.
+(참고 - 해싱된 ps로 공격할 수 있음, rainbow table로.)
+
+userSchema.pre("save", async function () {
+; Schema파일에서 promise를 사용.
+  this.password = await bcrypt.hash(this.password, 5);
+; this는, 여기서는 join.pug에서 user가 create한 계정이 db에 저장되기 전 값임.
+; 숫자 5는 hash를 몇 번 할 것인지
+});
+
+
+
+#7.3

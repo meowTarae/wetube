@@ -7,9 +7,15 @@ header
           a(href="/") Home
       li
         a(href="/search") Search
-      li 
-        a(href="/videos/upload") Upload Video
-      li
-        a(href="/join") Join
-      li
-        a(href="/login") Login
+      if (!loggedIn)
+        li
+          a(href="/join") Join
+        li
+          a(href="/login") Login
+      if (loggedIn)
+        li 
+          span Welcome #{ loggedInUser.name }!
+        li 
+          span Log Out
+        li 
+          a(href="/videos/upload") Upload Video

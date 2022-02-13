@@ -46,7 +46,7 @@ $or를 활용해주면 좋다.
 
 
 #7.4
-status code(= 상태코드)
+(http) status code(= 상태코드)
 
 npm 실행 시
 GET / 200 360.148 ms - - 에서 숫자 200이 status code임.

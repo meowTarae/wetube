@@ -113,9 +113,9 @@ match는 T/F 값을 받음
  클라이언트 정보를 가지고 서버 요청을 처리하여 클라이언트에게 응답
  
 
-세션 id는 브라우저를 구분하기위해 있는 것..?
 
-백엔드(= localhost)
+참고) 백엔드(= localhost)
+
 
 브라우저와 백엔드 사이는 WIFI처럼 유지되는 연결이 없음. 요청이 끝나면 서버는 우리를 잊음 (= 이것이 stateless),
 그래서 브라우저가 백엔드에 요청을 보낼 때 마다 
@@ -135,18 +135,18 @@ app.get(session~~)
 pug랑 express에서 local을 서로 공유할 수 있게끔 되어있음.
 이를 활용해보자.
 
-local이 전역함수(= global)라 세션이 적용된 라우터라면 어디서든 활용 가능.
+local이 전역함수(= global)라 세션이 적용된 라우터라면 
+pug 템플릿에서 별도 import 없이 활용 가능.
 
 
 
 #7.12
 session id는 쿠키로 저장 but, data는 server쪽에 저장됨.
-정확하게는 server의 session storage인 `MemoryStore`에 저장이 됨.
+정확하게는 server의 session storage인 `MemoryStore`에 저장이 됨(= nodeJS의 express의 경우).
 
 우리는 mongoDB(= server)에 세션을 저장할 수 있게 도와줄 connect-mongo를 사용할거야.
 
-만약 서버를 재시작하더라도, 세션이 db에 저장되어있기에
-이전처럼 로그아웃 되지 않음
+만약 서버를 재시작하더라도, 세션이 db에 저장이 될거임.
 
 
 -사용법

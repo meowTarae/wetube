@@ -243,4 +243,16 @@ run dev시 첫 시작 파일인 init.js 상단에 import "dotenv/config" 를 넣
 
 
 
+#7.16
+GitHub 소셜 로그인을 배워보자 !
+
+1. user를 깃헙으로 redirect 시키자.
+ 주소로 보낼 때, url에 추가 옵션을 달 수 있다.
+
+ allow_signup: 회원가입 창을 띄울지 말지
+ scope: user가 정보를 어디까지 공유해야하는지
+ 
+
+
+#7.17
 

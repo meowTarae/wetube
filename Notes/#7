@@ -233,3 +233,14 @@ Envrionment File (환경변수 만들기)
 
 
 #7.15
+dotenv (= .env)
+
+.env 파일을 읽고 변수들을 process.env에 넣어주는 역활.
+run dev시 첫 시작 파일인 init.js 상단에 import "dotenv/config" 를 넣어주자
+원래 require("dotenv").config() 이건데 import로 바꾸면 위에거 처럼 됨.
+
+첨 시작때 실행해줘야 뒤에 파일에서 변수 호출할 때 차질없어짐~~
+
+
+
+

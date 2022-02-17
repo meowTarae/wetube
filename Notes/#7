@@ -269,7 +269,7 @@ ex) const config = {  ; config는 '구성'이란 뜻이래~
 
 Utility 하나를 배우자.
 new URLSearchParams
-URLSearchParams 인터페이스는 URL의 쿼리 문자열에 대해 작업할 수 있는 유틸리티 메서드를 정의.
+( URLSearchParams 인터페이스 )는 URL의 쿼리 문자열에 대해 작업할 수 있는 유틸리티 메서드를 정의.
 
 URLSearchParams.toString()
 toString() 은 URLSearchParams 인터페이스의 메소드로서, URL에서 사용할 수 있는 쿼리 문자열을 리턴.
@@ -277,7 +277,86 @@ toString() 은 URLSearchParams 인터페이스의 메소드로서, URL에서 사
 
 
 
-#7.18
-Step 2.
+#7.18  ; env에 secret을 7acce54efb7abed9177fee2d946f960fce0aa526로 수정하자
+; 시작 전...
+; JSON이란?
+; (= JavaScript Object Notation)
+; 데이터를 전송하거나 저장할 때 쓰는, 경량의 data 교환 형식
+; js에서 객체를 만들 때 사용되는, '표현식'임..
+; json은 단순히 데이터를 표시하는 표현 방법일 뿐이다.
 
-보낼때 받을때 뭘 첨가해야하는지 알아보자
+
+Step 2.
+GitHub에서 받은 토큰을 Access토큰으로 바꾸자!
+
+그러기위해, 토큰을 url에 담아 GH Backend로 POST 하자.
+
+post 하려면, 
+client_id, client_secret, code가 필요해.
+두개는 GH에서 구하면 되고,
+code는, user가 authorize 할 때 GH 측에서 code를 parameter에 넣어서 우리에게 보내줌. 
+우린 code: req.query.code로 얻을 수 있지 ㅇㅇ
+; 참고) req.qurey는 params에서 정보를 정제해서 가져올 때 사용됨
+
+이후 POST를 위해 fetch를 쓰자.
+(fetch는 무언가를 할 때, 가져올 때 등에 사용)
+
+
+const data = await fetch(finalUrl, {
+  method: "POST"
+  headers: {
+      Accept: "application/json",
+    },
+  ; headers는, 우리가 GH에서 받아올 access토큰이, `text`가 아닌, `json`으로 받기 위해 있는거임.
+})
+const json = await data.json();
+
+아, 근데 NodeJS에선 fetch 못 알아먹음 ㅇㅇ
+fetch가 서버엔 없고 브라우저에만 존재하기 때문임
+그래서 node-fetch를 설치해야 함..
+
+
+
+; ! 궁금한거...
+; fetch로 post하면 json에 access_token이 담긴다는데
+; 언제 어떻게 담기게 되었는지 궁금하네...
+; fetch가 정보를 받아올때도 쓰인다니까, POST로 해당 주소로 보냈을때,
+; 준비물도 잘 챙겼고 하면 상대방이 알아서 값을 넣어서 다시 보내줄건데,
+; 이떄 넣어서 보내줄떄까지 시간이 걸릴테니 await를 걸었던거고,
+; 넣어준 곳이 json인건가? 아니지. json은 그냥 문자열이잖아.
+; 보낼때 const 어쩌구request에 담겨져오는것같음 ㅇㅇ
+; 그리고 이 썡 text를 json으로 js식 문자화 해주는거고~
+
+
+
+
+#7.19
+npm install node-fetch@2.6.1 << 버전 낮게 설치해야 작동된대. 뭐 호환이 안된다나...
+or npm i cross-fetch 해주자. 사용법은 둘이 똑같음. 
+
+설치하고 수입해주자.
+import fetch from "node-fetch" 
+or import fetch from "cross-fetch" 
+
+
+우리의 request로 GH가 access_token을 줌. (Json에 담겨져있음)
+
+Step 3.
+access_token으로 API에 접근하자.
+
+엑세스 토큰으로 user의 정보를 얻을 수 있음.
+아까 fetch는 access_token을 얻기 위해
+준비물로써 client_id, secret, code를 담아서 주소로 보냈던거고,
+이번엔 유저의 정보를 얻기 위해
+준비물로써 access_token을 담아서 주소로 보내는 거임.
+아, 물론 이런 준비물들은 외우는게 아니라, GH 사이트에 들어가보면 명시되어 있음 이렇게 하라고ㅇㅇ
+
+
+
+#7.20
+
+
+
+
+
+

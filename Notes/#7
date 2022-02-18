@@ -277,7 +277,7 @@ toString() 은 URLSearchParams 인터페이스의 메소드로서, URL에서 사
 
 
 
-#7.18  ; env에 secret을 7acce54efb7abed9177fee2d946f960fce0aa526로 수정하자
+#7.18  ; env에 secret을 로 수정하자
 ; 시작 전...
 ; JSON이란?
 ; (= JavaScript Object Notation)

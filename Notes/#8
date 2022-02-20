@@ -1,0 +1,4 @@
+#8.0
+form(method="POST")
+-> action을 입력하지 않으면 브라우저가
+   post request를 같은 url에 보낸다는걸 자동으로 앎.

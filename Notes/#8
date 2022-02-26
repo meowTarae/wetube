@@ -4,4 +4,18 @@ form(method="POST")
    post request를 같은 url에 보낸다는걸 자동으로 앎.
 
 
-   
+
+#8.2
+userRouter
+   .route("/edit")
+   .get(middleware, getEdit)
+   .post(middleware, postEdit);
+; middleware를 추가할 땐,
+
+userRouter
+   .route("/edit")
+   .all(middleware)
+   .get(getEdit)
+   .post(postEdit);
+; all()를 사용하자
+

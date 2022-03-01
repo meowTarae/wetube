@@ -19,3 +19,36 @@ userRouter
    .post(postEdit);
 ; all()를 사용하자
 
+
+
+#8.3
+Tip )
+파일을 import 할 때, 해당 파일을 내가 미리 ctrl + p로 열어놨다면
+저장누르면 알아서 맨위에 수입 된당
+
+
+ES6 )
+const id = req.session.user.id;
+
+===
+
+const { 
+   session : {
+      user : { id },
+   },
+} = req;
+
+또한,
+const { name, email } = req.body; 을
+
+const { 
+   session : {
+      user : { id },
+   },
+   body : { name, email },
+} = req;
+
+로 간략히 적을 수 있기에
+ES6 사용을 추천함.
+
+

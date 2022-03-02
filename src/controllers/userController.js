@@ -147,3 +147,5 @@ export const postEdit = async (req, res) => {
     username,
     location,
   });
+  return res.render("edit-profile");
+};
